@@ -14,6 +14,7 @@ module Shared exposing
 
 import Effect exposing (Effect)
 import Json.Decode
+import Ports
 import Route exposing (Route)
 import Route.Path
 import Shared.Model
@@ -80,6 +81,11 @@ update route msg model =
             , Effect.none
             )
 
+        Shared.Msg.DimensionsChanged dimensions ->
+            ( { model | currentHeight = dimensions.height, currentWidth = dimensions.width }
+            , Effect.none
+            )
+
 
 
 -- SUBSCRIPTIONS
@@ -87,4 +93,4 @@ update route msg model =
 
 subscriptions : Route () -> Model -> Sub Msg
 subscriptions route model =
-    Sub.none
+    Ports.dimensions Shared.Msg.DimensionsChanged

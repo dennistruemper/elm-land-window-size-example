@@ -9,6 +9,12 @@ export const onReady = ({ app, env }: ElmLand.OnReadyArgs) => {
   const dimensions = currentDimensions();
   console.log("Elm is ready ", app);
   console.log("With dimensions: ", dimensions);
+
+  window.onresize = () => {
+    const dimensions = currentDimensions();
+    console.log("Resized to: ", dimensions);
+    app.ports?.dimensions.send(dimensions);
+  };
 };
 
 function currentDimensions() {
@@ -25,10 +31,9 @@ namespace ElmLand {
   };
   export type OnReadyArgs = {
     env: Record<string, string>;
-    app: { ports?: Record<string, Port> };
+    app: { ports?: { dimensions: InputPort } };
   };
-  export type Port = {
-    send?: (data: unknown) => void;
-    subscribe?: (callback: (data: unknown) => unknown) => void;
+  export type InputPort = {
+    send: (data: unknown) => void;
   };
 }
