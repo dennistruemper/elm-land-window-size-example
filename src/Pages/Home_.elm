@@ -1,10 +1,11 @@
 module Pages.Home_ exposing (Model, Msg, page)
 
 import Effect exposing (Effect)
-import Route exposing (Route)
 import Html
 import Page exposing (Page)
+import Route exposing (Route)
 import Shared
+import Shared.Model
 import View exposing (View)
 
 
@@ -14,7 +15,7 @@ page shared route =
         { init = init
         , update = update
         , subscriptions = subscriptions
-        , view = view
+        , view = view shared
         }
 
 
@@ -63,8 +64,16 @@ subscriptions model =
 -- VIEW
 
 
-view : Model -> View Msg
-view model =
+view : Shared.Model -> Model -> View Msg
+view shared model =
     { title = "Pages.Home_"
-    , body = [ Html.text "/" ]
+    , body =
+        [ Html.text "/"
+        , Html.div []
+            [ Html.div [] [ Html.text ("InitialHeight: " ++ String.fromInt shared.initialHeight) ]
+            , Html.div [] [ Html.text ("InitialWidth: " ++ String.fromInt shared.initialWidth) ]
+            , Html.div [] [ Html.text ("CurrentHeight: " ++ String.fromInt shared.currentHeight) ]
+            , Html.div [] [ Html.text ("CirrentWidth: " ++ String.fromInt shared.currentWidth) ]
+            ]
+        ]
     }
