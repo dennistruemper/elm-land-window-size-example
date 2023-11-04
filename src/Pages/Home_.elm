@@ -73,7 +73,7 @@ view shared model =
             [ Html.div [] [ Html.text ("InitialHeight: " ++ String.fromInt shared.initialHeight) ]
             , Html.div [] [ Html.text ("InitialWidth: " ++ String.fromInt shared.initialWidth) ]
             , Html.div [] [ Html.text ("CurrentHeight: " ++ String.fromInt shared.currentHeight) ]
-            , Html.div [] [ Html.text ("CirrentWidth: " ++ String.fromInt shared.currentWidth) ]
+            , Html.div [] [ Html.text ("CurrentWidth: " ++ String.fromInt shared.currentWidth) ]
             ]
         ]
     }
