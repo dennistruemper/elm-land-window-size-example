@@ -2,3 +2,4 @@
 
 1. create a fresh elm-land application
 2. prepare customize Shared (elm-land customize shared), no changes by now
+3. customize Shared.Model and Shared init with dummy values

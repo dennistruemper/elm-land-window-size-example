@@ -11,4 +11,8 @@ own file, so they can be imported by `Effect.elm`
 
 -}
 type alias Model =
-    {}
+    { initialHeight : Int
+    , initialWidth : Int
+    , currentHeight : Int
+    , currentWidth : Int
+    }

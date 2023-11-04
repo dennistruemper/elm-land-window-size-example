@@ -43,7 +43,11 @@ type alias Model =
 
 init : Result Json.Decode.Error Flags -> Route () -> ( Model, Effect Msg )
 init flagsResult route =
-    ( {}
+    ( { initialHeight = 100
+      , initialWidth = 200
+      , currentHeight = 300
+      , currentWidth = 400
+      }
     , Effect.none
     )
 
