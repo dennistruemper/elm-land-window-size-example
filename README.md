@@ -6,3 +6,5 @@
 4. upgrade Home to a page (elm-land add page /)
 5. use Shared Data in Home page (dummy values for now)
 6. prepare to customize interop file. will use typescript, hope this is familiar. No changes by now: elm-land customize ts
+7. print inital dimensions on startup in interopFile
+8. insert initial dimensions as flags to started application

@@ -25,12 +25,14 @@ import Shared.Msg
 
 
 type alias Flags =
-    {}
+    { initialHeight : Int, initialWidth : Int }
 
 
 decoder : Json.Decode.Decoder Flags
 decoder =
-    Json.Decode.succeed {}
+    Json.Decode.map2 Flags
+        (Json.Decode.field "height" Json.Decode.int)
+        (Json.Decode.field "width" Json.Decode.int)
 
 
 
@@ -43,8 +45,18 @@ type alias Model =
 
 init : Result Json.Decode.Error Flags -> Route () -> ( Model, Effect Msg )
 init flagsResult route =
-    ( { initialHeight = 100
-      , initialWidth = 200
+    let
+        initialDimensions =
+            case flagsResult of
+                Ok flags ->
+                    flags
+
+                -- Just an example, so no real error handling
+                Err _ ->
+                    { initialHeight = 0, initialWidth = 0 }
+    in
+    ( { initialHeight = initialDimensions.initialHeight
+      , initialWidth = initialDimensions.initialWidth
       , currentHeight = 300
       , currentWidth = 400
       }

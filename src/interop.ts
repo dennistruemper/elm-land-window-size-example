@@ -1,20 +1,22 @@
 // This returns the flags passed into your Elm application
 export const flags = async ({ env }: ElmLand.FlagsArgs) => {
-  return {};
+  const dimensions = currentDimensions();
+  return { ...dimensions };
 };
 
 // This function is called after your Elm app starts
 export const onReady = ({ app, env }: ElmLand.OnReadyArgs) => {
-  const initalHeight = window.innerHeight;
-  const initalWidth = window.innerWidth;
-
-  const dimensions = {
-    height: initalHeight,
-    width: initalWidth,
-  };
+  const dimensions = currentDimensions();
   console.log("Elm is ready ", app);
   console.log("With dimensions: ", dimensions);
 };
+
+function currentDimensions() {
+  return {
+    width: window.innerWidth,
+    height: window.innerHeight,
+  };
+}
 
 // Type definitions for Elm Land
 namespace ElmLand {
