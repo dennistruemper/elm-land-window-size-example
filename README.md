@@ -5,3 +5,4 @@
 3. customize Shared.Model and Shared init with dummy values
 4. upgrade Home to a page (elm-land add page /)
 5. use Shared Data in Home page (dummy values for now)
+6. prepare to customize interop file. will use typescript, hope this is familiar. No changes by now: elm-land customize ts
