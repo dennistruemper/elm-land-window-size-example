@@ -5,7 +5,15 @@ export const flags = async ({ env }: ElmLand.FlagsArgs) => {
 
 // This function is called after your Elm app starts
 export const onReady = ({ app, env }: ElmLand.OnReadyArgs) => {
+  const initalHeight = window.innerHeight;
+  const initalWidth = window.innerWidth;
+
+  const dimensions = {
+    height: initalHeight,
+    width: initalWidth,
+  };
   console.log("Elm is ready ", app);
+  console.log("With dimensions: ", dimensions);
 };
 
 // Type definitions for Elm Land
